@@ -2,8 +2,6 @@ const express = require('express');
 const { StatusCodes } = require('http-status-codes');
 const router = express.Router();
 const customerService = require('../services/customerService');
-// const validateCustomerToCreate = require('../middlewares/validateCustomerToCreate');
-// const doesCustomerExists = require('../middlewares/doesCustomerExists');
 const { validateCustomerToCreate, validateCustomerToUpdate, doesCustomerExists } = require('../middlewares');
 
 

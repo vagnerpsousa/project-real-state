@@ -1,7 +1,8 @@
-const { locator, tenant} = require('../../database/models');
+const { locator, tenant } = require('../../database/models');
+const { Op } = require("sequelize");
 
 const create = async (body) => {
-  const { 
+  const {
     customerType,
     fullName: full_name,
     cpf,
@@ -19,21 +20,20 @@ const create = async (body) => {
   return newCustomer;
 };
 
-const getByCpfOrEmail = async (cpf, email, customerType) => {
-
+const getByCpfOrEmail = async (cpfOrEmail, customerType) => {
   let customer = null;
 
   if (customerType === 'locator') {
-    customer = await locator.findOne({ where: { cpf }, where: { email} });
+    customer = await locator.findOne({ where: { [Op.or]: [ { cpf: cpfOrEmail }, { email: cpfOrEmail } ] } });
   } else {
-    customer = await tenant.findOne({ where: { cpf }, where: { email} });
-  }
+    customer = await tenant.findOne({ where: { [Op.or]: [ { cpf: cpfOrEmail }, { email: cpfOrEmail } ] } });
+  };
 
-  return customer;
+return customer;
 };
 
 const updateById = async (id, body) => {
-  const { 
+  const {
     customerType,
     fullName: full_name,
     cpf,

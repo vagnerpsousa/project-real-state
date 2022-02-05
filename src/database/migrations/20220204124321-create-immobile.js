@@ -34,11 +34,11 @@ module.exports = {
       },
       condominium: {
         allowNull: false,
-        type: Sequelize.DECIMAL(4,2),
+        type: Sequelize.DECIMAL(8,2),
       },
       price: {
         allowNull: false,
-        type: Sequelize.DECIMAL(4,2),
+        type: Sequelize.DECIMAL(8,2),
       },
       address_id: {
         allowNull: false,

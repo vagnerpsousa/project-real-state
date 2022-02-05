@@ -28,7 +28,9 @@ module.exports = async (req, res, next) => {
     });
   }
 
-  const customerExists = await customerService.getByCpfOrEmail(cpf, email, customerType);
+  let customerExists = await customerService.getByCpfOrEmail(cpf, customerType);
+
+  customerExists = await customerService.getByCpfOrEmail(email, customerType);
 
   if (customerExists) {
     return next({

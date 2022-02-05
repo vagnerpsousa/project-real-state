@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('propertyTypes', {
+    await queryInterface.createTable('property_types', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -16,6 +16,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('propertyTypes');
+    await queryInterface.dropTable('property_types');
   }
 };

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const rescue = require('express-rescue');
 const customerController = require('./controllers/customerController');
+const immobileController = require('./controllers/immobileController');
 const { error } = require('./middlewares');
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.use('/customer', rescue(customerController));
+app.use('/immobile', rescue(immobileController));
 app.use(error);
 
 const PORT = process.env.PORT || 3000;
